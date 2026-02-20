@@ -9,10 +9,16 @@ namespace Assets._Scripts.Manager.Input
         private InputMouseInteraction mouse;
         public InputMouseInteraction Mouse => mouse;
 
+        private InputKeyInteraction key;
+        public InputKeyInteraction Key => key;
+
         protected override void OnInitialize()
         {
             mouse = new GameObject("InputMouseInteraction").AddComponent<InputMouseInteraction>();
             mouse.transform.SetParent(transform);
+
+            key = new GameObject("InputKeyInteraction").AddComponent<InputKeyInteraction>();
+            key.transform.SetParent(transform);
         }
     }
 }
