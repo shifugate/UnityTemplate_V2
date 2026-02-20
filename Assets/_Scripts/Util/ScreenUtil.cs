@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
 namespace Assets._Scripts.Util
@@ -57,11 +58,23 @@ namespace Assets._Scripts.Util
 
         private static List<RaycastResult> GetEventSystemRaycastResults()
         {
-            PointerEventData eventData = new PointerEventData(EventSystem.current);
-            eventData.position = Input.mousePosition;
-            List<RaycastResult> raysastResults = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(eventData, raysastResults);
-            return raysastResults;
+            if (EventSystem.current == null)
+                return new List<RaycastResult>();
+
+            Vector2 pointerPosition = Vector2.zero;
+
+            if (Pointer.current != null)
+                pointerPosition = Pointer.current.position.ReadValue();
+
+            PointerEventData eventData = new PointerEventData(EventSystem.current)
+            {
+                position = pointerPosition
+            };
+
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventData, raycastResults);
+
+            return raycastResults;
         }
     }
 }

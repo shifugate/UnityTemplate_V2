@@ -1,3 +1,5 @@
+using Assets._Scripts.Manager.Input;
+using Assets._Scripts.Manager.Keyboard;
 using Assets._Scripts.Manager.Language;
 using Assets._Scripts.Manager.Popup;
 using Assets._Scripts.Manager.Route;
@@ -5,7 +7,6 @@ using Assets._Scripts.Manager.Settings;
 using Assets._Scripts.Manager.Sound;
 using Assets._Scripts.Manager.System;
 using Assets._Scripts.Manager.Timeout;
-using Assets._Scripts.Manager.Keyboard;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -63,12 +64,12 @@ namespace Assets._Scripts.Manager
         private void InstanceNW()
         {
             SettingsManager.CreateInstance(this);
+            InputManager.CreateInstance(this);
             PopupManager.SetInstance(this, Instantiate(Resources.Load<PopupManager>("Manager/Popup/PopupManager")));
             LanguageManager.CreateInstance(this);
             SystemManager.CreateInstance(this);
             TimeoutManager.CreateInstance(this);
             KeyboardManager.SetInstance(this, Instantiate(Resources.Load<KeyboardManager>("Manager/Keyboard/KeyboardManager")));
-            SoundManager.SetInstance(this, Instantiate(Resources.Load<SoundManager>("Manager/Sound/SoundManager")));
         }
 
         private IEnumerator InitializeCR()
@@ -76,6 +77,7 @@ namespace Assets._Scripts.Manager
             initializeComplete = false;
 
             yield return RouteManager.CreateInstanceCR(this);
+            yield return SoundManager.SetInstanceCR(this, Instantiate(Resources.Load<SoundManager>("Manager/Sound/SoundManager")));
 
             initializeComplete = true;
         }

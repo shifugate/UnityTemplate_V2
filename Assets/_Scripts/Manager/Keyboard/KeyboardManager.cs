@@ -1,4 +1,5 @@
 ﻿using Assets._Scripts.Manager.__Base;
+using Assets._Scripts.Manager.Input;
 using Assets._Scripts.Manager.Keyboard.Board;
 using Assets._Scripts.Manager.Keyboard.Data;
 using Assets._Scripts.Manager.Keyboard.Event;
@@ -107,10 +108,10 @@ namespace Assets._Scripts.Manager.Keyboard
             if (inputField == null)
                 return;
 
-            if (Input.GetMouseButtonDown(0) && keyObject == null)
+            if (InputManager.Instance.Mouse.GetMouseButton0Down() && keyObject == null)
                 keyObject = ScreenUtil.GetUIOverPointerByName("KEYBOARDMANAGER_KEY");
 
-            if (Input.GetMouseButtonUp(0) && keyObject != null)
+            if (InputManager.Instance.Mouse.GetMouseButton0Up() && keyObject != null)
             {
                 KeyboardKey keyboardKey = keyObject.GetComponent<KeyboardKey>();
 
@@ -122,11 +123,11 @@ namespace Assets._Scripts.Manager.Keyboard
                 return;
             }
 
-            if (Input.GetMouseButtonDown(0) && !ScreenUtil.PointerOverUIName("KEYBOARDMANAGER") && keyObject == null)
+            if (InputManager.Instance.Mouse.GetMouseButton0Down() && !ScreenUtil.PointerOverUIName("KEYBOARDMANAGER") && keyObject == null)
             {
                 inputField = null;
             }
-            else if (Input.GetMouseButton(0))
+            else if (InputManager.Instance.Mouse.GetMouseButton0())
             {
                 if (keyObject != null)
                 {

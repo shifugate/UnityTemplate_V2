@@ -10,6 +10,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.U2D;
 
 namespace Assets._Scripts.Util
 {
@@ -370,6 +371,33 @@ namespace Assets._Scripts.Util
 
                 completeCallback?.Invoke(null);
             }
+        }
+
+        public static IEnumerator LoadTexture(string path, Action<Texture2D> completeCallback)
+        {
+            UnityWebRequest request = UnityWebRequestTexture.GetTexture($"file:///{path}");
+
+            yield return request.SendWebRequest();
+
+            if (HttpUtil.HasRequestError(request))
+            {
+                SystemUtil.Log(request.error, SystemUtil.LogType.Exception);
+
+                completeCallback?.Invoke(null);
+
+                yield break;
+            }
+
+            Texture2D texture = DownloadHandlerTexture.GetContent(request);
+
+            if (texture == null)
+            {
+                completeCallback?.Invoke(null);
+
+                yield break;
+            }
+
+            completeCallback?.Invoke(texture);
         }
 
         public static Texture2D RenderTextureToTexture2D(RenderTexture renderTexture)
