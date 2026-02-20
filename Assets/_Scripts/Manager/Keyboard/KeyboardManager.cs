@@ -27,8 +27,6 @@ namespace Assets._Scripts.Manager.Keyboard
         public enum Type 
         {
             Normal,
-            Email,
-            Numeric,
         }
 
         public enum Direction 
@@ -106,6 +104,9 @@ namespace Assets._Scripts.Manager.Keyboard
         private void UpdateInput()
         {
             if (inputField == null)
+                return;
+
+            if (ScreenUtil.GetUIOverPointerByName("KEYBOARDMANAGER_BLOCK"))
                 return;
 
             if (InputManager.Instance.Mouse.GetMouseButton0Down() && keyObject == null)
