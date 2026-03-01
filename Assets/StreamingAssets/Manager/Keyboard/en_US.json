@@ -37,7 +37,7 @@
 	"margin_y": 0,
 	"start_at": 3,
 	"show_at": 3,
-	"show_margin": 50,
+	"show_margin": 500,
 	"click_time": 0.25,
 	"keyboards": [0, 1, 2],
 	"hide_delay": 0.25

@@ -224,21 +224,24 @@
               "shifted": ".COM"
             },
             {
-              "normal": ".com.br",
-              "shifted": ".COM.BR"
+              "normal": ".ca",
+              "shifted": ".CA"
             },
             {
               "normal": ".",
               "shifted": "."
             },
             {
+			  "width_key": 154,
               "enter": true,
               "release_key": {
                 "file": "enter_normal_key.png"
               },
               "press_key": {
                 "file": "enter_press_key.png"
-              }
+              },
+			  "normal": "<color=#FFFFFF>done</color>",
+              "shifted": "<color=#FFFFFF>DONE</color>"
             }
           ]
         }
@@ -402,21 +405,24 @@
               "shifted": ".COM"
             },
             {
-              "normal": ".com.br",
-              "shifted": ".COM.BR"
+              "normal": ".ca",
+              "shifted": ".CA"
             },
             {
               "normal": ".",
               "shifted": "."
             },
             {
+			  "width_key": 154,
               "enter": true,
               "release_key": {
                 "file": "enter_normal_key.png"
               },
               "press_key": {
                 "file": "enter_press_key.png"
-              }
+              },
+			  "normal": "<color=#FFFFFF>done</color>",
+              "shifted": "<color=#FFFFFF>DONE</color>"
             }
           ]
         }
@@ -580,21 +586,24 @@
               "shifted": ".COM"
             },
             {
-              "normal": ".com.br",
-              "shifted": ".COM.BR"
+              "normal": ".ca",
+              "shifted": ".CA"
             },
             {
               "normal": ">",
               "shifted": ">"
             },
             {
+			  "width_key": 154,
               "enter": true,
               "release_key": {
                 "file": "enter_normal_key.png"
               },
               "press_key": {
                 "file": "enter_press_key.png"
-              }
+              },
+			  "normal": "<color=#FFFFFF>done</color>",
+              "shifted": "<color=#FFFFFF>DONE</color>"
             }
           ]
         }
