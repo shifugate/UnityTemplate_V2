@@ -26,7 +26,9 @@ namespace Assets._Scripts.Manager.Keyboard
     {
         public enum Type 
         {
-            Normal,
+			Normal,
+			Email,
+			Numeric,
         }
 
         public enum Direction 
