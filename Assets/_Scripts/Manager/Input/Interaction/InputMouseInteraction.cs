@@ -5,15 +5,17 @@ namespace Assets._Scripts.Manager.Input.Interaction
 {
     public class InputMouseInteraction : MonoBehaviour
     {
+        private bool debug;
+
         private InputAction pointerAction;
 
         private bool is0Held;
         private bool is0Down;
         private bool is0Up;
 
-        private void Awake()
+        private void Update()
         {
-            Initialize();
+            DebugInput();
         }
 
         private void LateUpdate()
@@ -24,6 +26,14 @@ namespace Assets._Scripts.Manager.Input.Interaction
         private void OnDestroy()
         {
             Dispose();
+        }
+
+        private void DebugInput()
+        {
+            if (!debug)
+                return;
+
+
         }
 
         private void Dispose()
@@ -38,8 +48,10 @@ namespace Assets._Scripts.Manager.Input.Interaction
             is0Up = false;
         }
 
-        public void Initialize()
+        public InputMouseInteraction Initialize(bool debug)
         {
+            this.debug = debug;
+
             pointerAction = new InputAction(type: InputActionType.Button, binding: "<Pointer>/press");
 
             pointerAction.performed += ctx =>
@@ -55,6 +67,8 @@ namespace Assets._Scripts.Manager.Input.Interaction
             };
 
             pointerAction.Enable();
+
+            return this;
         }
 
         public bool GetMouseButton0()
