@@ -57,24 +57,22 @@ namespace Assets._Scripts.Manager
 
         private void Initialize()
         {
-            InstanceNW();
             StartCoroutine(InitializeCR());
         }
-
-        private void InstanceNW()
+		
+        private IEnumerator InitializeCR()
         {
-            SettingsManager.CreateInstance(this);
+            initializeComplete = false;
+
+			yield return null;
+
+			SettingsManager.CreateInstance(this);
             InputManager.CreateInstance(this);
             PopupManager.SetInstance(this, Instantiate(Resources.Load<PopupManager>("Manager/Popup/PopupManager")));
             LanguageManager.CreateInstance(this);
             SystemManager.CreateInstance(this);
             TimeoutManager.CreateInstance(this);
             KeyboardManager.SetInstance(this, Instantiate(Resources.Load<KeyboardManager>("Manager/Keyboard/KeyboardManager")));
-        }
-
-        private IEnumerator InitializeCR()
-        {
-            initializeComplete = false;
 
             yield return RouteManager.CreateInstanceCR(this);
             yield return SoundManager.SetInstanceCR(this, Instantiate(Resources.Load<SoundManager>("Manager/Sound/SoundManager")));
